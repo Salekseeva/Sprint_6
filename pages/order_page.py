@@ -1,4 +1,5 @@
 # order_page.py
+from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from locators.order_page_locators import OrderPageLocators
 
@@ -26,6 +27,7 @@ class OrderPage(BasePage):
 
     def enter_rent_date(self, date):
         self.enter_text(OrderPageLocators.ORDER_DATE_FROM, date)
+        self.wait_and_find_element(OrderPageLocators.CLICK).click()
 
     def select_rent_duration(self, duration):
         self.click_element(OrderPageLocators.ORDER_HOW_LONG)
@@ -44,5 +46,6 @@ class OrderPage(BasePage):
     def confirm_order(self):
         self.click_element(OrderPageLocators.ORDER_CONFIRM_BUTTON)
 
+    @property
     def is_order_confirmed(self):
         return self.wait_and_find_element(OrderPageLocators.ORDER_POOPUP).is_displayed()

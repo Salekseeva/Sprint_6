@@ -18,9 +18,7 @@ class OrderPageLocators:
     ORDER_FINISH_BUTTON = (By.XPATH, '//button[contains(@class, "Button_Middle") and (text() = "Заказать")]')
     ORDER_CONFIRM_BUTTON = (By.XPATH, '//button[text() = "Да"]')
     ORDER_POOPUP = (By.XPATH, '//div[text()="Заказ оформлен"]')
-    ORDER_VIEW_STATUS_BUTTON = (By.XPATH, '//button[text() = "Посмотреть статус"]')
     YA_LOGO = (By.XPATH, '//*[@id = "stella_logo_3464--react"]')
-
 
     def __init__(self, driver):
         self.driver = driver  # Инициализировали его атрибуты

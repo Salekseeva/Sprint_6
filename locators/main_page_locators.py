@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     # Локаторы кнопок заказа
-    ORDER_BUTTON_HEADER = (By.CLASS_NAME, 'Button_Button__ra12g')
-    ORDER_BUTTON_MIDDLE = (By.CLASS_NAME, 'Button_Button__ra12g Button_Middle__1CSJM')
+    ORDER_BUTTON_HEADER = (By.XPATH, "//div[contains(@class, 'Header_Nav')]//button[contains(@class, 'Button_Button')]")
+    ORDER_BUTTON_MIDDLE = (By.XPATH, "//button[contains(@class, 'Button_Middle')]")
 
     # Локаторы логотипов
     LOGO_SAMOKAT = (By.XPATH, '//img[contains(@alt, "Scooter")]')

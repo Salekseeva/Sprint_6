@@ -9,10 +9,16 @@ class MainPage(BasePage):
         self.driver = driver
         self.locators = MainPageLocators()
 
+    def scroll_to_button(self, locator):
+        """Прокрутка к кнопке заказа"""
+        self.scroll_to_element(locator)
+
     def click_order_button_header(self):
+        self.scroll_to_button(self.locators.ORDER_BUTTON_HEADER)  # Прокрутка к кнопке
         self.click_element(self.locators.ORDER_BUTTON_HEADER)
 
     def click_order_button_middle(self):
+        self.scroll_to_button(self.locators.ORDER_BUTTON_MIDDLE)  # Прокрутка к кнопке
         self.click_element(self.locators.ORDER_BUTTON_MIDDLE)
 
     def click_scooter_logo(self):
@@ -21,15 +27,14 @@ class MainPage(BasePage):
     def click_yandex_logo(self):
         self.click_element(self.locators.LOGO_YANDEX)
 
-    def get_question_element(self, index):
+    def scroll_to_question(self, index):    # Добавлено
         question_locator = self.locators.QUESTIONS[index]
-        return self.driver.find_element(*question_locator)
+        self.scroll_to_element(question_locator)
 
     def click_question(self, index):
         question_locator = self.locators.QUESTIONS[index]
-        self.scroll_to_element(question_locator)  # Прокрутка к вопросу
-        self.driver.find_element(*question_locator).click()
+        self.click_element(question_locator) # Исправлено
 
     def get_answer_text(self, index):
         answer_locator = self.locators.ANSWERS[index]
-        return self.driver.find_element(*answer_locator).text
+        return self.wait_and_find_element(answer_locator).text # Исправлено, убрала "driver"

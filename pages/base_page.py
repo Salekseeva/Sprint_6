@@ -26,17 +26,3 @@ class BasePage:
     def scroll_to_element(self, locator):
         element = self.wait_and_find_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-
-    def scroll_to_element(self, locator):
-        element = self.wait_and_find_element(locator)
-        self.driver.execute_script("""
-            var element = arguments[0];
-            var offset = arguments[1];
-            var elementPosition = element.getBoundingClientRect().top;
-            var offsetPosition = elementPosition + window.pageYOffset - offset;
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        """, element, 2510)  # 100 - это смещение от верхней части экрана, можете настроить при необходимости
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))

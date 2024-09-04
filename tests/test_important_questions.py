@@ -13,9 +13,7 @@ def test_questions_and_answers(driver, question_index, expected_answer):
     main_page.open_page(MAIN_URL)
 
     with allure.step("Клик на Вопросы о важном"):
-        question_element = main_page.get_question_element(question_index)
-        driver.execute_script("arguments[0].scrollIntoView(true);", question_element)
-        ActionChains(driver).move_to_element(question_element).perform()  # Прокрутка к элементу
+        main_page.scroll_to_question(question_index)  # Используем новый метод для прокрутки
         main_page.click_question(question_index)
 
     with allure.step("Получение ответа из Вопросы о важном"):
